@@ -2,7 +2,7 @@ name: run hire_info_daily.py
 
 on:
   schedule:
-    - cron: '0 12 * * *' # At 00:00 on Monday
+    - cron: '30 12 * * *' # At 00:00 on Monday
 
 jobs:
   build:
