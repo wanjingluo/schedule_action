@@ -51,15 +51,16 @@ smtp_config = {
 
 
 def get_html(url):
-    html = requests.get(url)
+    headers = {"user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0"}
+    res = requests.get(url,heaaders=headers,timeout=10,verify=False)
 
     ######parse data
-    html.encoding = 'utf-8'
-    soup = BeautifulSoup(html.text, "html.parser")
-    return soup
+    res.encoding = 'utf-8'
+    html = BeautifulSoup(res.text, "html.parser")
+    return html
 
-def parse_html(soup):
-    hire = soup.find_all("ul","bd")[0]
+def parse_html(html):
+    hire = html.find_all("ul","bd")[0]
     hire_ls = hire.find_all("li")
 
     results = [(li.find("a").get("href"),
