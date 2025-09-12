@@ -1,8 +1,8 @@
-name: run main.py
+name: run hire_info_daily.py
 
 on:
   schedule:
-    - cron: '0 0 * * 1' # At 00:00 on Monday
+    - cron: '0 12 * * *' # At 00:00 on Monday
 
 jobs:
   build:
@@ -24,8 +24,8 @@ jobs:
           
       - name: execute py script # run main.py
         env:
-          SOME_SECRET: ${{ secrets.SOME_SECRET }}
-        run: python main.py
+          SOME_SECRET: ${{ secrets.ACTION_SECRET }}
+        run: python hire_info_daily.py
           
       - name: commit files
         run: |
