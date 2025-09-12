@@ -31,7 +31,6 @@ try:
 except KeyError:
     SECRET = "Token not available!"
     logger.info("Token not available!")
-    raise
 
 
 #######define vars
